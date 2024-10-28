@@ -1,0 +1,1 @@
+neocities push -e .obsidian build
