@@ -109,6 +109,21 @@ else
   HTML.set_tag_name(post_date, "time")
 end
 
+-- Extract and clean up the <last-update> element
+last_update = HTML.select_one(page, "last-update")
+update_datetime = HTML.get_attribute(last_update, "datetime")
+if update_datetime then
+  env["update"] = update_datetime
+else
+  env["update"] = HTML.inner_html(last_update)
+end
+
+if is_bare(post_date) then
+  HTML.delete(last_update)
+else
+  HTML.set_tag_name(last_update, "time")
+end
+
 -- Extract and clean up the <post-tags> element
 -- It's supposed to look like <post-tags>foo, bar, baz</post-tags>
 -- We extract the tags string and split it into individual tags
@@ -125,21 +140,21 @@ post_excerpt = HTML.select_one(page, "post-excerpt")
 env["excerpt"] = HTML.inner_html(post_excerpt)
 -- The logic for <post-excerpt> is somewhat more complicated:
 -- if it's bare 
-local excerpt_parent = HTML.parent(post_excerpt)
-if HTML.get_tag_name(excerpt_parent) == "p" then
-  -- If it looks like <p><post-excerpt>...</post-excerpt></p>,
-  -- then we can just move its content to the parent paragraph
-  -- and call it a day
-  HTML.unwrap(excerpt)
-else
-  local children = HTML.select_any_of(excerpt, {"p", "div"})
-  if children then
-    HTML.set_tag_name(post_excerpt, "div")
-  else
-    HTML.set_tag_name(post_excerpt, "p")
-  end
-  HTML.set_attribute(post_excerpt, "id", "post-excerpt")
-end
+-- local excerpt_parent = HTML.parent(post_excerpt)
+-- if HTML.get_tag_name(excerpt_parent) == "p" then
+  -- -- If it looks like <p><post-excerpt>...</post-excerpt></p>,
+  -- -- then we can just move its content to the parent paragraph
+  -- -- and call it a day
+  -- HTML.unwrap(excerpt)
+-- else
+  -- local children = HTML.select_any_of(excerpt, {"p", "div"})
+  -- if children then
+    -- HTML.set_tag_name(post_excerpt, "div")
+  -- else
+    -- HTML.set_tag_name(post_excerpt, "p")
+  -- end
+  -- HTML.set_attribute(post_excerpt, "id", "post-excerpt")
+-- end
 
 -- Now clean up the <post-metadata> container
 post_metadata_container = HTML.select_one(page, "post-metadata")

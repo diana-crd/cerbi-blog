@@ -17,7 +17,7 @@ env = {}
 env["entries"] = site_index
 posts = HTML.parse(String.render_template(config["index_template"], env))
 container = HTML.select_one(page, config["index_selector"])
-HTML.append_child(container, posts)
+HTML.replace_content(container, posts)
 
 -- Create new pages for each tag
 
@@ -69,7 +69,7 @@ end
 
 function build_tag_page(entries, tag)
   local matching_entries = find_entries_with_tag(entries, tag)
-  local template = "<h1>Posts tagged \"{{tag}}\"</h1>" .. config["index_template"]
+  local template = "<div class=box><div class=inner><h1 id=\"archive\">Post nella categoria \"{{tag}}\"</h1></div></div>" .. config["index_template"]
   local env = {}
   env["tag"] = tag
   env["entries"] = matching_entries
@@ -109,12 +109,14 @@ while (i <= tag_count) do
 end
 
 local template = [[
-<h1>Posts by tag</h1>
-<ul>
+<div class=box><div class=inner>
+<h1>Post divisi per categorie</h1>
+<ul id="tag-list">
 {% for t in tag_links %}
-  <li> <a href="{{t.url}}">{{t.title}}</a> </li>
+  <li> <h2><a href="{{t.url}}">{{t.title}}</a></h2> </li>
 {% endfor %}
 </ul>
+</div></div>
 ]]
 
 local env = {}

@@ -14,6 +14,7 @@
 
 -- Configuration
 snippet = config["html"]
+action = config["action"]
 selector = config["selector"]
 check_selector = config["check_selector"]
 
@@ -33,8 +34,12 @@ else
     if not target then
       Log.info("Page has no element matching selector " .. selector)
     else
-      snippet_html = HTML.parse(snippet)
-      HTML.append_child(target, snippet_html)
+	  snippet_html = HTML.parse(snippet)
+	  if action == "insert_after" then
+        HTML.insert_after(target, snippet_html)
+	  else
+        HTML.append_child(target, snippet_html)
+	  end
     end
   end
 end

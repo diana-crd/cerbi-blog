@@ -20,22 +20,36 @@
 
   # HTML page skeleton file to insert content into
   default_template_file = "templates/main.html"
-
+  
+  # ignore .draft files
+  ignore_extensions = ["draft", "obsidian"]
+  
   # Insert the content in <main>, after existing children (if any)
-  default_content_selector = "main"
+  default_content_selector = "div#content"
   default_content_action = "append_child"
 
   # Page considered the section index
   index_page = "index"
 
   page_file_extensions = ["html", "md"]
-
   doctype = "<!DOCTYPE html>"
 
   # Automatically load Lua plugins from plugins/
   # E.g. plugins/reading-time.lua is automatically loaded as "reading-time" widget.
   plugin_discovery = true
   plugin_dirs = ["plugins"]
+
+[templates.tag-template]
+  file = "templates/main_tag.html"
+  content_selector = "div#content"
+  content_action = "append_child"
+  section = "blog/tag"
+  
+[templates.archive-template]
+  file = "templates/main_archive.html"
+  content_selector = "div#content"
+  content_action = "append_child"
+  page = "blog/index.md"
 
 # Options in the [custom_options] table aren't soupault built-ins.
 # It's a table for options that can be shared between multiple plugins.
@@ -50,16 +64,16 @@
   # If you want to generate Atom feeds, you will need to adjust the site metadata config below:
 
   # Required:
-  # site_url = "https://www.example.com/~jrandomhacker"
+  # site_url = "cerbi.neocities.org"
 
   # Optional but strongly recommended:
-  # site_author = "J. Random Hacker"
-  # site_author_email = "jrandomhacker@example.com"
-  # site_title = "My website"
-  # site_logo = "https://example.com/~jrandomhacker/favicon.png"
+  # site_author = "Diana Cervi"
+  # site_author_email = "oolongcat@protonmail.com"
+  # site_title = "Cerbi"
+  # site_logo = "https://cerbi.neocities.org/images/favicon.png"
 
   # Completely optional: 
-  # site_subtitle = "Some subtitle"
+  # site_subtitle = "Un blogghino"
 
 [preprocessors]
   # Automatically call pandoc on every *.md page to conver it to HTML
@@ -73,7 +87,7 @@
 
   sort_descending = true
 
-  extract_after_widgets = ['insert-reading-time', 'make-post-header']
+  extract_after_widgets = ['make-post-header']
 
   sort_by = "date"
 
@@ -82,12 +96,12 @@
   leaf_file = ".leaf"
 
 [index.fields]
-  title = { selector = ["#post-title", "h1"] }
-  excerpt = { selector = ["#post-excerpt", "p"] }
+  title = { selector = ["post-title", "h1"] }
+  excerpt = { selector = ["post-excerpt", "p"] }
   date = { selector = ["#post-date", "time"] }
   tags = { selector = ".post-tag", select_all = true }
+  update = { selector = "#last-update" }
 
-  reading_time = { selector = "#reading-time" }
 
 [index.views.blog-index]
   # Insert generated index into an element that matches "#blog-index" selector.
@@ -99,19 +113,23 @@
   # Jingoo template for rendering extracted metadata
   index_template = """
     {% for e in entries %}
+	<div class=box><div class=inner>
     <h2><a href="{{e.url}}">{{e.title}}</a></h2>
-    <div><strong>Last update:</strong> {{e.date}}</div>
+    <div><strong>Pubblicato:</strong> {{e.date}}</div>
+	{% if e.update %}
+	 <div><strong>Aggiornato:</strong> {{e.update}}</div>
+	 {% endif %}
     {% if e.tags %}
     <div class="post-tags">
-       <strong>Tags: </strong>
+       <strong>Categorie: </strong>
        {%- for t in e.tags -%}
          <a href="/blog/tag/{{t}}"><span class="post-tag">{{t}}</span></a>{% if not loop.last %}, {% endif %}
        {%- endfor -%}
     </div>
     {% endif %}
-    <div><strong>Reading time:</strong> {{e.reading_time}}</div>
     <p>{{e.excerpt}}</p>
-    <a href="{{e.url}}">Read more</a>
+    <a href="{{e.url}}">Continua</a>
+	</div></div>
     {% endfor %}
   """
 
@@ -128,6 +146,7 @@
 
   # In this case index_template is a soupault built-in
   index_template = """
+    {% set limit = int(soupault_config.custom_options.blog_summary_max_entries) %}
     {% set limit = int(soupault_config.custom_options.blog_summary_max_entries) %}
     <dl>
       {% for e in sublist(0, limit, entries) %}
@@ -148,18 +167,45 @@
   # Must run only after the header with an <h1 id="post-title"> element is inserted, which affects the blog section pages
   after = 'make-post-header'
 
-  selector = ["#page-title", "h1"]
-  default = "Sample site"
-  append = " &mdash; Sample site"
+  selector = ["#post-title", "h1"]
+  default = "Cerbi"
+  append = " &mdash; Cerbi"
 
 # Inserts the contents of templates/header.html right before the <main> element
 # There's a variety of actions, including prepend_child and replace_content
-[widgets.insert-header]
+#[widgets.insert-header]
+#  widget = "include"
+
+#  selector = ".footnotes"
+#  action = "insert_before"
+#  file = "templates/header.html"
+
+# Inserts the contents of templates/sidebar.html inside the sidebar element
+# There's a variety of actions, including prepend_child and replace_content
+[widgets.insert-sidebar]
   widget = "include"
 
-  selector = "main"
-  action = "insert_before"
-  file = "templates/header.html"
+  selector = ".page-wrapper"
+  action = "prepend_child"
+  file = "templates/sidebar.html"
+
+# Inserts the contents of templates/title.html inside the title element
+# There's a variety of actions, including prepend_child and replace_content
+[widgets.insert-title]
+  widget = "include"
+
+  selector = ".title"
+  action = "replace_content"
+  file = "templates/title.html"
+
+# Inserts the contents of templates/navbar.html inside the quick-nav element
+# There's a variety of actions, including prepend_child and replace_content
+[widgets.insert-navbar]
+  widget = "include"
+
+  selector = "body"
+  action = "prepend_child"
+  file = "templates/navbar.html"
 
 # This widget comes from plugins/section-link-highlight.lua
 # It highlights the "active" link in the navigation menu,
@@ -168,9 +214,9 @@
   widget = "section-link-highlight"
 
   # Must run only after the header with a navigation menu is inserted
-  after = ["insert-header"]
+  after = ["insert-navbar"]
 
-  selector = "nav"
+  selector = ".navbar"
   active_link_class = "nav-active"
 
 # Inserts the contents of templates/footer.html at the end of the <body>
@@ -181,61 +227,33 @@
   file = "templates/footer.html"
 
 [widgets.make-post-header]
+  after = "insert-title"
   widget = "post-header"
   section = "blog/"
   exclude_page = "blog/index.md"
 
-  content_container_selector = "main"
+  content_container_selector = "#content"
 
   post_header_template = '''
     <div id="post-header">
       <h1 id="post-title">{{title}}</h1>
-      <div><strong>Last update:</strong> <time id="post-date" datetime="{{date}}">{{date}}</time></div>
+      <div><strong>Pubblicato:</strong> <time id="post-date" datetime="{{date}}">{{date}}</time></div>
+	  {% if update %}
+	    <div><strong>Aggiornato:</strong> <time id="last-update" datetime="{{update}}">{{update}}</time></div>
+		{% endif %}
       {% if tags %}
         <div class="post-tags">
-         <span><strong>Tags:</strong> </span>
+         <span><strong>Categorie:</strong> </span>
          {%- for t in tags -%}
            <a href="/blog/tag/{{t}}"><span class="post-tag">{{t}}</span></a>{% if not loop.last %}, {% endif %}
          {%- endfor -%}
          </div>
+		 <post-excerpt style="display:none;">{{excerpt}}</post-excerpt>
         {% endif %}
     </div>
 '''
 
 
-# Why require adding a target element for the reading-time plugin by hand?
-# We'll insert it automatically
-[widgets.insert-reading-time-container]
-  widget = "insert_html"
-
-  after = "make-post-header"
-
-  # Reading time container should only be in blog/*
-  section = "blog/"
-
-  # ...but not in blog/index.html
-  exclude_path_regex = "(.*)/index(.*)"
-
-  # Insert the reading time container right after the post title in <h1>
-  action = "append_child"
-  selector = "#post-header"
-
-  html = '<div><strong>Reading time:</strong> <span id="reading-time"></span></div>'
-
-# This widget comes from plugins/reading-time.lua
-# It calculates estimated reading time based on word count
-[widgets.insert-reading-time]
-  widget = "reading-time"
-
-  # If this widget runs before "insert-reading-time-container",
-  # there will be nowhere to insert the reading time.
-  # This is why we explicitly schedule it to run after that widget.
-  after = "insert-reading-time-container"
-
-  selector = "#reading-time"
-
-  # The element where it looks for page "content"
-  content_selector = "main"
 
 # Inserts a table of contents generated from page headings
 [widgets.table-of-contents]
@@ -259,21 +277,43 @@
 
   use_heading_slug = true
 
+[widgets.insert-comment-box]
+  widget = "insert-if"
+
+  selector = ".main"
+  check_selector = "#archive"
+  html = '<div id="blog-entries"></div>'
+
+[widgets.insert-blog-entries]
+  widget = "insert-if"
+
+  selector = ".main"
+  check_selector = "post-excerpt"
+  html = '''
+    <div class=box><div class=inner>
+	  <div class="commentbox"></div>
+	  <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+	  <script>commentBox('5666845642194944-proj')</script>
+  </div></div>'''
+  action = ""
+ 
 [widgets.insert-footnotes-container]
   widget = "insert-if"
 
-  selector = "main"
+  selector = "h4#footnotes"
   check_selector = "fn"
-  html = '<div id="footnotes"> </div>'
+  html = '<ul id="footnotes"> </ul>'
+  action = "insert_after"
 
 [widgets.footnotes]
   widget = "footnotes"
 
   after = "insert-footnotes-container"
 
-  selector = "div#footnotes"
+  selector = "ul#footnotes"
   footnote_selector = ["fn"]
   footnote_link_class = "footnote"
+  footnote_template = "<li> </li>"
   back_links = true
   link_id_prepend = "footnote-"
   back_link_id_append = "-ref"
