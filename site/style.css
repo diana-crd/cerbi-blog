@@ -1,287 +1,378 @@
-/** Variables **/
+/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
+   HTML content. To learn how to do something, just try searching Google for questions like
+   "how to change link color." */
 
-:root
-{
-    --Canvas-bg: #fff;
-    --Canvas-color: #000;
-    --Pre-bg: #efefef;
-    --Pre-color: #000;
-    --Pre-border: #aaa;
-    --Main-color: #333;
-    --Code-color: #1a8a66; /* teal */
-    --Accent1-color: #e31e24; /* red */
-    --Accent2-color: #d65906; /* orange */
-    --Selection-bg: #e31e24;
-    --Selection-color: #fff;
-    /* from KWrite */
-    --Highlight-num: #b07e00;
-    --Highlight-esc: #ff00ff;
-    --Highlight-str: #bf0303;
-    --Highlight-pps: #818100;
-    --Highlight-slc: #4c4b4b;
-    --Highlight-com: #4c4b4b;
-    --Highlight-ppc: #008200;
-    --Highlight-opt: #000000;
-    --Highlight-ipl: #0057ae;
-    --Highlight-lin: #555555;
-    --Highlight-kwa: #000000;
-    --Highlight-kwb: #0057ae;
-    --Highlight-kwc: #000000;
-    --Highlight-kwd: #010181;
+body {
+  margin: 0;
+  padding: 0;
+  background: #2a2543;
+  line-height: 133%;
+  font-size: 0.98em;
+  font-family: "Open Sans", "Droid Sans", "Calibri", sans-serif;
+  }
+  
+  
+/*Miscellanous custom styling for various elements.*/
+h1, h2, h3 {
+  font-family: "Calibri";
+  }
+  
+a {
+  color: #4d4385;
+  }
+
+a:hover, a:focus {
+  color: #2a2543;
+  transition: ease-in 0.1s, ease-out 0.1s;
+  }
+  
+blockquote {
+  border-left: #4d4385 3px solid;
+  background: #d8d4ec;
+  padding: 0.1px 0.75rem;
+  margin: 0 1.5rem;
+  }
+
+hr {
+  width: 75%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  }
+  
+/*Sticky navigation links at the top of the page.*/
+.quick-nav {
+  position:fixed;
+  z-index: 999;
+  width: 100%;
+  background: #0a000a;
+  background: rgba(,0,10,1);
+  text-align: right;
+  color: #fff;  
+  font-size: 1em;
+  }
+  
+.navbar {
+  padding: 1px 40px;
+  }
+  
+.navbar a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 4px;
+  margin: 0 15px;
+  }
+  
+ .navbar li {
+	 display: inline-block;
+ }
+  
+.navbar li a:hover, .footer a:hover, .navbar a:focus, .footer a:focus {
+  color: #edeef3;
+  transition: ease-in 0.1s, ease-out 0.1s;
+  text-decoration: underline;
+  }
+ 
+ a.nav-active {
+  color: #52587c;
+  font-size: 1em;
+  }
+ 
+ a.nav-active:hover, a.nav-active:focus {
+  transition: none;
+  text-decoration: none;
+ }
+  
+/*Header image.*/
+.header {
+  height: 200px;
+  background: linear-gradient(rgba(10,0,10,0.5), rgba(10,0,10,0.4)), url(/img/pexels-4254548-crop2.jpg);
+  }
+
+/*Title bar with icon and title/tagline.*/
+.title {
+  background: #52587c;
+  min-height: 60px;
+  margin-bottom: -25px;
+  text-align: right;
+  }
+  
+.title-text, .title-pic {
+  padding:0;
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+  }
+  
+/*Contains the text tagline.*/
+.title-text {
+  padding-right: 1em;
+  width: calc(85vw - 110px);
+  line-height: 167%;
+  margin-top: -3px;
+  padding-bottom: 15px;
+  }
+  
+.title-text h2 {
+  padding:0;
+  font-size: 32px;
+  }
+  
+/*Contains the profile pic. This can be left out and should still look okay.*/
+.title-pic {
+  height: 100px;
+  margin-right: 100px;
+  margin-top: -25px;
+  border: 5px solid #52587c;
+  border-radius: 10px;
+  }
+  
+.title-pic img {
+  height: 100%;
+  overflow: hidden;
+  }
+  
+/*Contains the main content and sidebar.*/
+.page-wrapper {
+  padding: 0 100px;
+  margin: 0 auto;
+  background: #ddd;
+  background: linear-gradient(rgba(52,37,77,1), rgba(42,30,67,0.25)), url(/images/tile.png); /*Gradient makes tiles "fade in".*/
+  }
+
+/*Contains the sidebar boxes.*/
+.sidebar {
+  width: 320px;
+  margin: 50px 0;
+  position: absolute;
+  }
+  
+.sidebar h2 {
+  font-size: 1.2rem;
+  background: #696f92;
+  color: #fff;
+  padding: 12px 10px 10px 10px;
+  margin: auto;
+  }
+  
+.sidebar a {
+  display: block;
+  border-left: 3px solid #52587c;
+  background: #bcb9d6;
+  padding: 5px;
+  margin: 10px 0;
+  color: #0e0718;
+  text-decoration: none;
+  }
+  
+.sidebar a:hover, .sidebar a:focus {
+  background: #99a1c7;
+  transition: ease-in 0.1s, ease-out 0.1s;
+  }
+  
+.sidebar, .main {
+  display: inline-block;
+  }
+
+/*Contains main content boxes.*/
+.main {
+  margin: 50px 100px 50px 350px;
+  width: auto;
+  width: calc(100vw - 550px);
+  }
+  
+/*Basic container type for subsections of main and sidebar divs*/
+.box {
+  margin-bottom: 20px;
+  }
+ 
+/*Inner content div for boxes. Padding goes here so sidebar headers etc can keep their no-margin look.*/
+.inner {
+  background:  #edeef3;
+  padding: 25px 25px;
+  }
+
+.inner h1 {
+	margin-top: 0em;
+	margin-bottom: 0em;
 }
 
-@media (prefers-color-scheme: dark)
-{
-    :root
-    {
-        --Canvas-bg: #000;
-        --Canvas-color: #fff;
-        --Pre-bg: #151515;
-        --Pre-color: #fff;
-        --Pre-border: #222;
-        --Main-color: #f2f2f2;
-        --Code-color: #2adba4; /* teal */
-        --Accent1-color: #e31e24; /* red */
-        --Accent2-color: #ef7f1a; /* orange */
-        /* via @toastal */
-        --Highlight-num: #43a60d;
-        --Highlight-esc: #dfad06;
-        --Highlight-str: #f77f1d;
-        --Highlight-pps: #d60041;
-        --Highlight-slc: #a0a0a0;
-        --Highlight-com: #a0a0a0;
-        --Highlight-ppc: #94e39;
-        --Highlight-opt: #ffffff;
-        --Highlight-ipl: #4dc987;
-        --Highlight-lin: #555555;
-        --Highlight-kwa: #d60041;
-        --Highlight-kwb: #8655e7;
-        --Highlight-kwc: #ffffff;
-        --Highlight-kwd: #00a48f;
+.inner img {
+  max-width: 100%; /*Prevent image overflow.*/
+  height: auto;
+  border-radius: 5px; /*Give images in content rounded corners.*/
+  }
+  
+.box, .title-pic img {
+  border-radius: 5px;
+  overflow: hidden; /*Force inner divs to conform to rounded corners.*/
+  }
+
+#tag-list li::marker {
+  content: "► ";
+  font-size: 1.2em;
+  color: #302548;
+  }
+
+a.footnote {
+	text-decoration: none;
+}
+
+ul#footnotes {
+  list-style-type: none;
+}
+  
+/*Footer section.*/
+.footer {
+  background: #050005;
+  color: #fff;
+  padding: 5px 0px;
+  font-size: 0.75em;
+  padding-bottom: 10px;
+  text-align: right;
+  }
+  
+.footer a {
+  color: #fff;
+  }
+
+/*Individual column of the footer. You can have 3 of these at the current given width.*/
+.footer-column {
+  width: 15%;
+  margin: 5px 10px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  }
+
+#postlistdiv ul {
+  font-size: 1.2em;
+  padding: 0;
+  list-style-type: none;
+}
+#recentpostlistdiv ul {
+  font-size: 1.2em;
+  padding: 0;
+  list-style-type: none;
+}
+#recentpostlistshortdiv ul {
+  font-size: 1em;
+  padding: 0;
+  list-style-type: none;
+}
+.moreposts {
+  font-size: 1em;
+  padding: 0;
+  list-style-type: none;
+}
+post-excerpt#hide {
+	font-size: 0em;
+	line-height: 0em;
+}
+/*NEXT AND PREVIOUS LINKS STYLE*/
+#nextprev {
+  text-align: center;
+  margin-top: 1.4em;
+}
+
+/*DISQUS STYLE*/
+#disqus_thread {
+  margin-top: 1.6em;
+}
+
+/*Adapt to narrower screens.*/
+@media(max-width: 900px) {
+  .page-wrapper {
+    padding: 0 50px;
     }
-}
-
-/** Fixups */
-
-/* Avoid elements wider than screen on mobile */
-img
-{
-    display: inline-block;
-    max-width: 100%;
-}
-
-pre, code, sample
-{
-    white-space: pre-wrap;
-    hyphens: none;
-}
-
-table
-{
-    max-width: 100%;
-}
-
-html {
-    font-size: 62.5%;
-}
-
-body
-{
-    margin: 0;
-    line-height: 1.5;
-    font-size: 1.6rem;
-}
-
-/** Structural blocks */
-
-body
-{
-    max-width: 88rem;
-
-    padding: 1rem 2rem 2rem;
-
-    margin-left:  auto; 
-    margin-right: auto;
-}
-
-
-/* Visual styles */
-html
-{
-    background: var(--Canvas-bg);
-    color: var(--Canvas-color);
-}
-
-header
-{
-    text-align: center;
-}
-
-.header-text
-{
-    font-size: 150%;
-    font-weight: bold;
-}
-
-::selection 
-{
-    background: var(--Selection-bg);
-    color: var(--Selection-color);
-}
-
-/* shared gradient border */
-nav, header, footer
-{
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--Accent1-color);
-    border-image: linear-gradient(to right, var(--Accent1-color), var(--Accent2-color)) 2;
-}
-
-nav, header
-{
-    font-size: 1.8rem;
-    border-bottom-width: 2px;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    text-align: center;
-}
-
-main
-{
-    color: var(--Main-color);
-    text-rendering: optimizeLegibility;
-}
-
-footer
-{
-    text-align: center;
-    padding-top: 1rem;
-    margin-top: 1rem;
-    border-top-width: 2px;
-}
-
-
-
-
-a { 
-    color: var(--Accent2-color);
-}
-
-a:hover, a:focus
-{
-    text-decoration: underline;
-}
-
-a.nav-active { 
-    color: var(--Accent1-color);
-    font-weight: 700;
-}
-
-nav a { text-decoration: none; }
-
-a.here { text-decoration: none; }
-
-hr
-{
-    border: 0 none;
-    color: var(--Accent2-color);
-    background-color: currentColor;
-    height: 2px;
-}
-
-hr.footnotes { width: 40%; }
-
-a.footnote
-{
-    text-decoration: none;
-    margin-right: 0.4rem;
-}
-
-ul.toc { list-style: none; }
-
-h5 { font-size: 1.6rem; }
-h6 { font-size: 1.4rem; }
-
-code, kbd, samp
-{
-    color: var(--Code-color);
-}
-
-
-/** Typography */
-
-@supports (hyphens: auto)
-{
-    main
-    {
-        text-align: justify;
-        hyphens: auto;
+  
+  .sidebar {
+    width: 25vw;
     }
-}
-
-body
-{
-    font-family: system-ui, sans-serif;
-    font-weight: 400;
-}
-
-table, th, td
-{
-    border: 1px solid var(--Accent1-color);
-    border-collapse: collapse;
-}
-
-th, td
-{
-    padding: 0.5em;
-    hyphens: none;
-    text-align: left;
-} 
-
-.centered { text-align: center; }
-
-@media (prefers-color-scheme: dark)
-{
-    body
-    {
-        font-weight: 350;
+    
+  .main {
+    margin: 50px 0 50px calc(25vw + 30px);
+    width: calc(75vw - 150px);
     }
-}
-
-
-/* Style definition file generated by highlight 3.52, http://www.andre-simon.de/ */
-/* highlight theme: Kwrite Editor */
-body.hl	{ background-color: #e0eaee; }
-pre.hl	{ color: #000000; background-color:#e0eaee; font-size: 10pt; font-family: monospace; }
-.hl.num { color: var(--Highlight-num); }
-.hl.esc { color: var(--Highlight-esc); }
-.hl.str { color: var(--Highlight-str); }
-.hl.pps { color: var(--Highlight-pps); }
-.hl.slc { color: var(--Highlight-slc); font-style: italic; }
-.hl.com { color: var(--Highlight-com); font-style: italic; }
-.hl.ppc { color: var(--Highlight-ppc); }
-.hl.opt { color: var(--Highlight-opt); }
-.hl.ipl { color: var(--Highlight-ipl); }
-.hl.lin { color: var(--Highlight-lin); }
-.hl.kwa { color: var(--Highlight-kwa); font-weight: bold; }
-.hl.kwb { color: var(--Highlight-kwb); }
-.hl.kwc { color: var(--Highlight-kwc); font-weight: bold; }
-.hl.kwd { color: var(--Highlight-kwd); }
-
-pre
-{
-    box-sizing: border-box;
-    overflow: auto;
-    padding: 2rem;
-    margin-left: -2rem;
-    margin-right: -2rem;
-    border: 1px solid var(--Pre-border);
-    background: var(--Pre-bg);
-    color: var(--Pre-color);
-}
-
-pre code
-{
-    color: inherit;
-}
+    
+  .title-pic {
+    margin-right: 7vw;
+    }
+    
+  .title-text {
+    padding-left: 1vw;
+    padding-right: 2vw;
+	line-height: 167%;
+    }
+  
+  }
+  
+/*Mobile layout.*/
+@media(orientation: portrait) {  
+  .page-wrapper {
+    padding-top: 0.1px;
+    padding-bottom: 0.1px;
+    }
+  
+  .sidebar, .main {
+    display: block;
+    margin: 0 auto;
+    position: static;
+    width: 100%;    
+    }
+    
+  .sidebar {
+    margin-top: 50px;
+    }
+    
+  .main {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    }
+    
+    
+  }
+  
+/***
+For really narrow screens which cause the title text to wrap. 
+You may need to adjust the width at which this kicks in to fit 
+your own title.
+***/
+@media(max-width: 500px) {
+  .header {
+    height: 60vw;
+    }
+  
+  .title {
+    padding-right: 0;
+    }
+  
+  .title-text {
+    margin-top: -5px;
+    }
+    
+  .title-text h1 {
+    font-size: 6vw;
+    line-height: 100%;
+    }
+    
+  .title {
+    height: calc(auto - 25px);
+    }
+    
+  .page-wrapper {
+    padding: 0.1px 7vw;
+    }
+    
+  .inner h1 {
+	  line-height: 50%;
+    }
+    
+  /*For extra narrow screens where the columns would get too skinny.*/
+  .footer-column {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+	padding-left: 15px
+    }
+  }

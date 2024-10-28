@@ -1,0 +1,27 @@
+<post-metadata>
+  <post-title>Mabel episodio 8.5: Lettera da Juniper</post-title>
+  <post-date>2023-12-22</post-date>
+  <post-tags>scrittura, traduzione</post-tags>
+  <post-excerpt><em>Sei una persona, Lily, sei una creatura a tutti gli effetti – e non è curioso ciò? Come può qualcosa come te venire alla luce? Ti voglio disfare, come punti di cucito, per vedere cosa ti muove – ma non lo farò. Mi accontenterò di tracciare il tuo nome sul mio polso per contemplare il modo in cui trasformi in oro il mio sangue.</em></post-excerpt>
+</post-metadata>
+
+_Questa è una mia traduzione del copione per l'episodio "8.5" del podcast horror [Mabel](https://mabelpodcast.com/), scritto e prodotto da Becca de la Rosa [[Episodio](https://www.podchaser.com/podcasts/mabel-217856/episodes/mabel-episode-85-letter-from-j-10032364) / [Testo Originale](https://mabelpodcast.com/s/Letter-from-Juniper-mjbc.pdf)]._
+
+Cara Lily.
+
+Per tutto il giorno e per tutta la notte ho pensato a scrivere questa lettera, l’ho vista dispiegarsi nella mia mente, e quindi adesso che sono qui con la mia carta e il mio inchiostro non mi sembra una cosa vera, ma come un incarico che si intraprende in un sogno. Quando avrò finito arrotolerò questa carta e la infilerò in un guscio di ghianda e la lancerò attraverso la finestra della tua camera da letto; ho sognato questo, pure, e ho forse sognato te? Sei reale? Sei una qualche cosa di carne, respiri?
+
+A volte, quando ti guardo dal tuo specchio, mi sembra di star guardando un pezzo della mia stessa anima, strappato via e lanciato nel mondo. Non perché tu mi appartenga, ma perché sei familiare ed estranea allo stesso tempo. Sei una persona, Lily, sei una creatura a tutti gli effetti – e non è curioso ciò? Come può qualcosa come te venire alla luce? Ti voglio disfare, come punti di cucito, per vedere cosa ti muove – ma non lo farò. Mi accontenterò di tracciare il tuo nome sul mio polso per contemplare il modo in cui trasformi in oro il mio sangue.
+
+Eri piccola quando ero piccola io. Ti guardavo dalla stella blu, dalla stella folgorante. Fu mia madre a mettermi in guardia da te, ma ti ho sentita cantare nella felce cannella<fn> [Osmundastrum cinnamomeum](https://en.wikipedia.org/wiki/Osmundastrum), comunemente nota come _cinnamon fern_.</fn> e ho pensato che fossi bellissima: una cosa che mai avrei potuto toccare. Come la cresta di Orione. Come la più distante delle Pleiadi. Portavi un eritronio tra i capelli, come il tuo nome; il giglio dente di cane<fn> [Erythronium americanum](https://en.wikipedia.org/wiki/Erythronium_americanum), chiamata nel testo _yellow trout lily_; visto che non mi suonava bene tirarci in ballo le trote me la sono cavata traducendo un nome comune alternativo (tralaltro simile a quello dell'unico eritronio presente in Italia).</fn>. Lily, il giglio. A volte penso che ti mangerei se potessi. C’è una strega in una storia che aveva mangiato una ragazza che amava, e da allora ogni volta che parlava cadevano fiori dalla sua bocca aperta. Ti ingoierei, e diventeresti una lobelia sulla mia lingua per il resto della mia vita. Questo dicono: per noi non è insolito voler mangiare quel che amiamo.
+
+Tu però sei insolita. Ogni momento che abbiamo passato insieme è una pietra brillante nella conca del mio teschio. Sono avida, e per questo ogni tanto le tiro fuori e le guardo, come un drago. Il giorno in cui andammo al pozzo sepolto e gettammo erba delle farfalle<fn> [Asclepias tuberosa](https://en.wikipedia.org/wiki/Asclepias_tuberosa), comunemente nota come _butterfly weed_ per i suoi fiori ricchi di nettare che attirano le farfalle.</fn> giù nell’acqua nera per contare i nostri desideri. La prima volta in cui mettesti piede fuori dal tuo vestito per me, oro nel sole, giallo e oro. La notte in cui ti portai nella collina, quando ti aggrappasti a me come lichene e nell’atrio i tuoi occhi erano fiaccole. Il giorno nella pioggia, entrambe che ridevamo.
+
+Cara Lily: mia madre mi ha insegnato molte cose ma non mi ha insegnato questo. Da dove viene, il filo che ci lega assieme? Chi l’ha filato? Di cos’è composto, qual’è la sua materia? Ho una mezza intenzione di disfarmi, per trovarne la fonte; ma non lo farò.
+
+Quel giorno nel campo di verdi-e-oro<fn> [Chrysogonum virginianum](https://en.wikipedia.org/wiki/Chrysogonum_virginianum), comunemente nota come _green-and-gold_.</fn>. Mi dissi chi sei tu, da dove sei venuta. Io dissi vengo dalla collina; sono la ragazza che non muore. Ridesti, e lì mi innamorai di te. Ecco: l’ho scritto, l’ho trasformato in inchiostro e l’ho reso qualcosa di tangibile (ma potresti bruciare questa lettera e ti amerei lo stesso, quindi dev’essere qualcosa di oltre la materia). Vedilo qui nero su bianco. Ti amo, ragazza dalla casa sulla collina, ragazza coi capelli di raggi di sole. Ti amo, nodo nel mio cuore. Ti amo, mani sulle mie mani, mani sulle mie costole, bocca sulla mia bocca. Ti amo, pietra nella mia scarpa. Amo solo te. Solo te. Solo e sempre te.
+
+Tua in eterno
+
+Juniper
+<h4 id="footnotes"> Volevo solo tradurre tre minuti di follia saffica e invece mi sono trovata a dover capire come rendere piante nordamericane che in italiano non hanno un nome comune quindi adesso vi beccate pure i fun fact sulla botanica</h4>

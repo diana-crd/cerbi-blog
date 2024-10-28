@@ -1,4 +1,3 @@
-# Blog
+<h1 id="archive">Archivio</h1>
 
-<div id="blog-entries">
-</div>
+

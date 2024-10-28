@@ -1,4 +1,3 @@
 # About
 
-This page just serves as a demonstration of a non-post page.
-You should add something meaningful to it.
+![Una foto di un cerbiatto rannicchiato dentro un cespuglio, con la testa rivolta all'indietro per guardare l'obiettivo.](https://cerbi.neocities.org/images/fotocervo.jpeg)
